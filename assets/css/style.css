@@ -70,7 +70,8 @@ body {
     position: relative;
     z-index: 2;
     overflow-y: auto;
-    display: none; /* hidden initially */
+    opacity: 0;
+    transition: opacity 1s ease;
     box-sizing: border-box;
 }
 
