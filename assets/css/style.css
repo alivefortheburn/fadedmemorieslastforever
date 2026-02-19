@@ -1,0 +1,52 @@
+/* Full-screen Tap Overlay */
+#tap-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* Video background */
+#bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Logo in center */
+#logo {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+/* Gallery link below logo */
+#gallery-link {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+/* Hidden/show helpers */
+.hidden { display: none !important; }
+.show { opacity: 1 !important; display: block !important; }
