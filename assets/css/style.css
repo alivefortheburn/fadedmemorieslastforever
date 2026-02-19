@@ -39,7 +39,7 @@
 /* Gallery link below logo */
 #gallery-link {
     position: fixed;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
