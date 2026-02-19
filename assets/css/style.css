@@ -4,7 +4,7 @@ body {
     padding: 0;
     background: #000;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Google Sans Code', monospace; /* Google Sans Code applied globally */
 }
 
 /* ===== Tap Overlay ===== */
@@ -19,9 +19,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-family: 'Google Sans Code', monospace; /* ensure font for text */
+    font-size: 1.5rem; /* starting text size */
+    text-transform: lowercase; /* optional */
+    letter-spacing: 1px;
     cursor: pointer;
     z-index: 9999;
+    text-align: center;
 }
 
 /* ===== Background Video ===== */
@@ -46,6 +50,7 @@ body {
     display: none; /* hidden initially */
     opacity: 0;
     transition: opacity 1.2s ease;
+    font-family: 'Google Sans Code', monospace; /* apply font to clickable area if text is inside */
 }
 
 /* Logo Image */
@@ -55,6 +60,20 @@ body {
     cursor: pointer;
 }
 
+/* ===== Gallery Link Below Logo ===== */
+#gallery-link {
+    position: fixed;
+    top: 55%; /* below the logo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-family: 'Google Sans Code', monospace; /* font for gallery text */
+    font-size: 1.8rem; /* adjust size */
+    color: white;
+    text-decoration: none;
+    opacity: 0; /* hidden initially */
+    transition: opacity 1s ease-in;
+}
 
 /* ===== Utility Classes ===== */
 .hidden {
@@ -64,4 +83,19 @@ body {
 .show {
     display: block;
     opacity: 1;
+}
+
+/* ===== Mobile Fonts ===== */
+@media (max-width: 600px) {
+    #tap-overlay {
+        font-size: 1.2rem; /* smaller on mobile */
+    }
+
+    #gallery-link {
+        font-size: 1.4rem;
+    }
+
+    #logo {
+        width: 80px; /* smaller logo on mobile */
+    }
 }
