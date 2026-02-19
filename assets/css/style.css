@@ -25,6 +25,8 @@
 
 /* Logo in center */
 #logo {
+    width: 100px;
+    height: auto;
     position: fixed;
     top: 40%;
     left: 50%;
