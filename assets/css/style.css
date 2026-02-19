@@ -71,6 +71,7 @@ body {
     z-index: 2;
     overflow-y: auto;
     display: none; /* hidden initially */
+    box-sizing: border-box;
 }
 
 #image-gallery img {
