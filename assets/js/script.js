@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Show gallery after logo fade out
                 setTimeout(() => {
-                    gallery.classList.remove("hidden");
+                    //gallery.classList.remove("hidden");
                     gallery.classList.add("show");
                 }, 1200); // match logo fade-out time
             }, 3000); // logo visible duration
