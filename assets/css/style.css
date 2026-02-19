@@ -33,6 +33,7 @@ body {
     height: 100vh;
     object-fit: cover;
     z-index: 1;
+    display: none; /* start hidden */
 }
 
 /* ===== Clickable Logo Wrapper ===== */
@@ -44,21 +45,22 @@ body {
     z-index: 2;
     opacity: 0;
     transition: opacity 1.2s ease;
+    display: none; /* start hidden */
 }
 
 /* ===== Logo Image ===== */
 #logo {
-    width: 110px;   /* adjust size here */
+    width: 110px;
     height: auto;
     cursor: pointer;
 }
 
 /* ===== Utility Classes ===== */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .show {
-    display: block;
-    opacity: 1;
+    display: block !important;
+    opacity: 1 !important;
 }
