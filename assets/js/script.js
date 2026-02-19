@@ -4,11 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const logoLink = document.getElementById("logo-link");
 
     overlay.addEventListener("click", function() {
-
-        // Hide overlay
+        // Hide overlay immediately
         overlay.style.display = "none";
 
-        // Show video
+        // Show and play video with audio
         video.style.display = "block";
         video.muted = false;
         video.play();
@@ -16,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // Show logo after 2 seconds
         setTimeout(() => {
             logoLink.style.display = "block";
-            logoLink.style.opacity = "1";
+            setTimeout(() => {
+                logoLink.style.opacity = "1";
+            }, 50); // small delay to trigger CSS transition
         }, 2000);
     });
 });
