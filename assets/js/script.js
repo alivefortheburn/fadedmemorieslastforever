@@ -4,17 +4,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const logoLink = document.getElementById("logo-link");
 
     overlay.addEventListener("click", function() {
-        // Hide overlay
-        overlay.classList.add("hidden");
 
-        // Show and play video
-        video.classList.remove("hidden");
+        // Hide overlay
+        overlay.style.display = "none";
+
+        // Show video
+        video.style.display = "block";
         video.muted = false;
         video.play();
 
-        // Show logo (which is now the link)
+        // Show logo after 2 seconds
         setTimeout(() => {
-            logoLink.classList.add("show");
+            logoLink.style.display = "block";
+            logoLink.style.opacity = "1";
         }, 2000);
     });
 });
