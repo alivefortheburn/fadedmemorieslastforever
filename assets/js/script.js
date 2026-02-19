@@ -1,22 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("tap-overlay");
     const video = document.getElementById("bg-video");
-    const logo = document.getElementById("logo");
-    const gallery = document.getElementById("gallery-link");
+    const logoLink = document.getElementById("logo-link");
 
     overlay.addEventListener("click", function() {
         // Hide overlay
         overlay.classList.add("hidden");
 
-        // Play video with audio
+        // Show and play video
         video.classList.remove("hidden");
         video.muted = false;
         video.play();
 
-        // Show logo and gallery link after 2 seconds
+        // Show logo (which is now the link)
         setTimeout(() => {
-            logo.classList.add("show");
-            gallery.classList.add("show");
+            logoLink.classList.add("show");
         }, 2000);
     });
 });
