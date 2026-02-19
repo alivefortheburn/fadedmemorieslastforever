@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("tap-overlay");
     const video = document.getElementById("bg-video");
     const logoLink = document.getElementById("logo-link");
+    const gallery = document.getElementById("image-gallery");
 
     overlay.addEventListener("click", function() {
         // Hide overlay immediately
@@ -17,7 +18,18 @@ document.addEventListener("DOMContentLoaded", function() {
             logoLink.style.display = "block";
             setTimeout(() => {
                 logoLink.style.opacity = "1";
-            }, 50); // small delay to trigger CSS transition
+            }, 50);
+
+            // Fade out logo after 3 seconds
+            setTimeout(() => {
+                logoLink.style.opacity = "0";
+
+                // Show gallery after logo fade out
+                setTimeout(() => {
+                    gallery.classList.remove("hidden");
+                    gallery.classList.add("show");
+                }, 1200); // match logo fade-out time
+            }, 3000); // logo visible duration
         }, 2000);
     });
 });
