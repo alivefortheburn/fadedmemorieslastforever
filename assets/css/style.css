@@ -55,6 +55,16 @@ body {
     cursor: pointer;
 }
 
+/* Gallery Background Image*/
+body.gallery {
+    background-image: url('../images/sunset.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backgrounud-attachment: fixed;
+
+}
+
 /* ===== Utility Classes ===== */
 .hidden {
     display: none;
