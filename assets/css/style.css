@@ -28,6 +28,46 @@ body {
     text-align: center;
 }
 
+/* ===== Gallery Page Styles ===== */
+body.gallery {
+    background-color: #000;
+    font-family: 'Google Sans Code', monospace;
+    padding: 2rem;
+    color: white;
+}
+
+.gallery-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* space between images */
+    justify-items: center;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto; /* keep square ratio */
+    object-fit: contain;
+    max-width: 400px; /* adjust size if needed */
+    border: 2px solid white; /* optional border */
+    box-sizing: border-box;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+    .gallery-grid img {
+        max-width: 90%;
+    }
+}
+
 /* ===== Background Video ===== */
 #bg-video {
     position: fixed;
