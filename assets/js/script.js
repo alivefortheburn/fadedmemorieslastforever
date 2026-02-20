@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const video = document.getElementById("bg-video");
     const logoLink = document.getElementById("logo-link");
     const gallery = document.getElementById("image-gallery");
+    const topLogo = document.getElementById("top-logo"); // NEW
 
     overlay.addEventListener("click", function() {
         // Hide overlay immediately
@@ -24,10 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
                 logoLink.style.opacity = "0";
 
-                // Show gallery after logo fade out
+                // Show gallery + top logo after logo fade out
                 setTimeout(() => {
-                    //gallery.classList.remove("hidden");
                     gallery.classList.add("show");
+
+                    // Show the new top centered logo
+                    topLogo.style.display = "block";
+
                 }, 1200); // match logo fade-out time
             }, 3000); // logo visible duration
         }, 2000);
