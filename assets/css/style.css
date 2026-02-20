@@ -30,7 +30,7 @@ body {
 
 /* ===== Tap Overlay Text Shine Effect ===== */
 #tap-overlay h1 {
-    color: #00ff00; /* base green */
+    color: #ffffff; /* base green */
     background: linear-gradient(
         120deg,
         #00ff00 30%,
