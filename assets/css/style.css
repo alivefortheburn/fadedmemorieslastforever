@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Google Sans Code', monospace;
-    font-size: 1.5rem; /* starting text size */
+    font-size: 1.5rem;
     text-transform: lowercase;
     letter-spacing: 1px;
     cursor: pointer;
@@ -30,7 +30,7 @@ body {
 
 /* ===== Tap Overlay Text Shine Effect ===== */
 #tap-overlay h1 {
-    color: #c0c0c0; 
+    color: #c0c0c0;
     background: linear-gradient(
         120deg,
         #00ff00 30%,
@@ -44,12 +44,8 @@ body {
 }
 
 @keyframes shine {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
 
 /* ===== Background Video ===== */
@@ -62,6 +58,47 @@ body {
     object-fit: cover;
     z-index: 1;
     display: none;
+}
+
+/* ===== NEW Top Center Logo ===== */
+#top-logo {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: none;
+    pointer-events: none;
+}
+
+#top-logo img {
+    width: 180px; /* same size as your main logo */
+    height: auto;
+    position: relative;
+}
+
+/* Shine sweep overlay */
+#top-logo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: logoShine 4s ease-in-out infinite;
+}
+
+@keyframes logoShine {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
 }
 
 /* ===== Clickable Logo ===== */
@@ -86,7 +123,7 @@ body {
 #image-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px 20px; /* vertical gap bigger than horizontal gap */
+    gap: 40px 20px;
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -116,13 +153,20 @@ body {
     #tap-overlay {
         font-size: 0.8rem;
     }
+
     #logo {
         width: 120px;
     }
+
+    #top-logo img {
+        width: 120px;
+    }
+
     #image-gallery {
         grid-template-columns: 1fr;
         gap: 30px 0;
     }
+
     #image-gallery img {
         width: 95%;
     }
