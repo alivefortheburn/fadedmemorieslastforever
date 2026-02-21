@@ -41,12 +41,12 @@ body {
 
 /* ===== Left Carousel / Image Container ===== */
 .carousel-container {
-    width: 60%; /* slightly bigger for larger images */
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 600px; /* taller so images are bigger */
+    min-height: 600px;
 }
 
 .carousel-container img {
@@ -79,9 +79,8 @@ body {
     100% { opacity: 0; }
 }
 
-/* Apply faster animations with bigger images */
 .carousel-container img:first-child {
-    animation: fadeCycle1 6s infinite; /* faster cycle */
+    animation: fadeCycle1 6s infinite;
 }
 
 .carousel-container img:last-child {
@@ -96,7 +95,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(0,0,0,0.5); /* opaque black behind text */
+    background: rgba(0,0,0,0.5);
     border-radius: 8px;
     min-height: 200px;
 }
@@ -113,16 +112,32 @@ body {
     text-align: center;
 }
 
-/* ===== Responsive ===== */
+/* ===== MOBILE ADJUSTMENTS ===== */
 @media (max-width: 800px) {
+    /* Stack carousel above text */
     .product-page {
         flex-direction: column;
     }
-    .carousel-container, .product-info {
+
+    /* Make images bigger and move them down */
+    .carousel-container {
         width: 90%;
-        padding: 0;
+        min-height: 500px; /* taller for bigger images */
         margin-bottom: 2rem;
-        min-height: 400px;
+    }
+
+    .carousel-container img {
+        max-height: 450px; /* increase size on mobile */
+    }
+
+    /* Shrink header text a bit */
+    .product-info h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Hide background video on mobile */
+    .product-bg {
+        display: none;
     }
 }
 </style>
@@ -144,9 +159,9 @@ body {
         <h1>"Feel Like Uzi" Shirt</h1>
         <p>
            -220 GSM<br>
-            -100% cotton<br>
-            -Slight oversize fit<br>
-            -Inspired by Prettifun's "Funhouse"
+           -100% cotton<br>
+           -Slight oversize fit<br>
+           -Inspired by Prettifun's "Funhouse"
         </p>
     </div>
 </div>
