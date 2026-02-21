@@ -9,32 +9,50 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <style>
-/* ===== Product Carousel Styling ===== */
-.product-page {
-    position: relative;
-    z-index: 2;
+/* ===== Product Page Layout ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.product-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.product-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    text-align: center;
-    overflow: hidden;
-    flex-direction: column;
+    height: 100vh;
+    gap: 3rem;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
+/* ===== Carousel Column ===== */
 .carousel-container {
     position: relative;
-    width: 60%;
-    max-width: 800px;
+    flex: 1 1 50%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
-    z-index: 2;
 }
 
 .carousel-images {
     display: flex;
-    transition: transform 0.5s ease;
     width: 100%;
+    transition: transform 0.5s ease;
 }
 
 .carousel-images img {
@@ -42,22 +60,20 @@
     object-fit: contain;
     max-width: 100%;
     height: auto;
-    margin: 0 auto;
 }
 
 /* Make third image slightly smaller */
 .carousel-images img:last-child {
-    width: 90%;
+    max-width: 85%;  /* slightly smaller than others */
     margin: 0 auto;
 }
 
+/* Carousel dots */
 .carousel-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .carousel-dots button {
@@ -75,45 +91,39 @@
     opacity: 1;
 }
 
-/* ===== Product Info Styling ===== */
+/* ===== Text Column ===== */
 .product-info {
-    width: 60%;
-    max-width: 800px;
+    flex: 1 1 50%;
     color: white;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 500px;
 }
 
 .product-info h1 {
     font-size: 2rem;
-    letter-spacing: 2px;
     margin-bottom: 1rem;
+    letter-spacing: 2px;
 }
 
 .product-info p {
     font-size: 1rem;
-}
-
-/* ===== Background Video ===== */
-.product-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
+    line-height: 1.5;
 }
 </style>
 </head>
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay muted playsinline loop>
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
+<!-- Product Page -->
 <div class="product-page">
-    <!-- Carousel -->
+    <!-- Carousel Left -->
     <div class="carousel-container">
         <div class="carousel-images">
             <img src="assets/images/uzifront.png" alt="Uzi Front">
@@ -127,22 +137,26 @@
         </div>
     </div>
 
-    <!-- Product Info -->
+    <!-- Text Right -->
     <div class="product-info">
         <h1>UZI</h1>
-        <p>Placeholder text for product description.</p>
+        <p>Placeholder text for the product description goes here. You can adjust the text and styling as needed.</p>
     </div>
 </div>
 
 <script>
 const images = document.querySelectorAll('.carousel-images img');
 const dots = document.querySelectorAll('.carousel-dots button');
-const carousel = document.querySelector('.carousel-images');
 let currentIndex = 0;
 
 function updateCarousel() {
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    const offset = -currentIndex * 100;
+    images.forEach((img, i) => {
+        img.style.transform = `translateX(${offset}%)`;
+    });
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+    });
 }
 
 // Dot click
@@ -155,8 +169,13 @@ dots.forEach((dot, i) => {
 
 // Swipe support for mobile
 let startX = 0;
-carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-carousel.addEventListener('touchend', e => {
+const container = document.querySelector('.carousel-images');
+
+container.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+});
+
+container.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     if (endX - startX > 50 && currentIndex > 0) currentIndex--;
     else if (startX - endX > 50 && currentIndex < images.length - 1) currentIndex++;
