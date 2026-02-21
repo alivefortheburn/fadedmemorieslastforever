@@ -25,14 +25,16 @@
     display: flex;
     overflow: hidden;
     width: 100%;
+    max-height: 70vh; /* limit height to prevent cutoff */
 }
 
 .carousel-images img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 70vh; /* keep images within viewport */
     width: auto;
     height: auto;
     margin: 0 auto;
+    object-fit: contain;
     transition: transform 0.5s ease;
     flex-shrink: 0;
 }
@@ -41,7 +43,7 @@
 .carousel-dots {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 8px; /* closer to images */
 }
 
 .carousel-dots button {
@@ -83,23 +85,46 @@ body {
 .product-page {
     position: relative;
     z-index: 2;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 5vh;
     text-align: center;
 }
 
-.product-page h1 {
+.product-info {
+    flex: 1 1 300px;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.product-info h1 {
     font-size: 2rem;
     letter-spacing: 2px;
+}
+
+.product-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ===== Mobile adjustments ===== */
+@media (max-width: 600px) {
+    .carousel-container {
+        width: 95%;
+    }
+    .carousel-images {
+        max-height: 50vh;
+    }
 }
 </style>
 </head>
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay playsinline loop>
+<video class="product-bg" autoplay muted playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
