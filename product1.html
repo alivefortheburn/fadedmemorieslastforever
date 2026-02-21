@@ -9,13 +9,71 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <style>
-/* ===== Product Page Layout ===== */
-body, html {
+/* ===== Carousel Styles ===== */
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* slightly smaller than full width for spacing */
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-images {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center; /* center images horizontally */
+    align-items: center;     /* center images vertically */
+}
+
+.carousel-images img {
+    max-width: 95%; /* larger image size */
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 auto;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0,0,0,0.6);
+}
+
+#prev {
+    left: -40px;
+}
+
+#next {
+    right: -40px;
+}
+
+/* ===== Product Page Styling ===== */
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    background: #000;
+    font-family: 'Google Sans Code', monospace;
     overflow: hidden;
+    color: white;
 }
 
 .product-bg {
@@ -30,156 +88,88 @@ body, html {
 
 .product-page {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 100vh;
-    gap: 3rem;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-/* ===== Carousel Column ===== */
-.carousel-container {
     position: relative;
-    flex: 1 1 50%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+    z-index: 2;
+    padding: 2rem;
 }
 
-/* Each slide wrapper */
-.carousel-slide {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Image inside slide */
-.carousel-slide img {
-    object-fit: contain;
-    max-width: 110%; /* Bigger images */
-    max-height: 100%;
-    height: auto;
-    width: auto;
-}
-
-/* Carousel wrapper */
-.carousel-images {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease;
-}
-
-/* ===== Carousel Arrows ===== */
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    z-index: 3;
-    transition: background 0.3s ease;
-}
-
-.carousel-arrow:hover {
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.carousel-arrow-left {
-    left: 10px;
-}
-
-.carousel-arrow-right {
-    right: 10px;
-}
-
-/* ===== Text Column ===== */
+/* ===== Product Info Styling ===== */
 .product-info {
-    flex: 1 1 50%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 500px;
+    max-width: 40%;
+    background: rgba(0,0,0,0.6); /* semi-transparent black */
+    padding: 1.5rem;
+    border-radius: 10px;
     text-align: center;
 }
 
 .product-info h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    letter-spacing: 2px;
 }
 
 .product-info p {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.5rem;
 }
 </style>
 </head>
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay playsinline loop>
+<video class="product-bg" autoplay playsinline loop muted>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
-<!-- Product Page -->
+<!-- Product Content -->
 <div class="product-page">
-    <!-- Carousel Left -->
+    <!-- Carousel -->
     <div class="carousel-container">
+        <button id="prev" class="carousel-arrow">&#10094;</button>
         <div class="carousel-images">
-            <div class="carousel-slide">
-                <img src="assets/images/uzifront.png" alt="Uzi Front">
-            </div>
-            <div class="carousel-slide">
-                <img src="assets/images/uziback.png" alt="Uzi Back">
-            </div>
+            <img src="assets/images/uzifront.png" alt="Uzi Front">
+            <img src="assets/images/uziback.png" alt="Uzi Back">
         </div>
-        <!-- Arrows -->
-        <button class="carousel-arrow carousel-arrow-left">&#10094;</button>
-        <button class="carousel-arrow carousel-arrow-right">&#10095;</button>
+        <button id="next" class="carousel-arrow">&#10095;</button>
     </div>
 
-    <!-- Text Right -->
+    <!-- Product Info -->
     <div class="product-info">
         <h1>UZI</h1>
-        <p>Placeholder text for the product description goes here. You can adjust the text and styling as needed.</p>
+        <p>Placeholder text for product description.</p>
     </div>
 </div>
 
 <script>
-const slides = document.querySelectorAll('.carousel-slide');
-const container = document.querySelector('.carousel-images');
-const prevBtn = document.querySelector('.carousel-arrow-left');
-const nextBtn = document.querySelector('.carousel-arrow-right');
+const images = document.querySelectorAll('.carousel-images img');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 let currentIndex = 0;
 
 function updateCarousel() {
     const offset = -currentIndex * 100;
-    container.style.transform = `translateX(${offset}%)`;
+    images.forEach((img, i) => {
+        img.style.transform = `translateX(${offset}%)`;
+    });
 }
 
-// Arrow clicks
+// Arrow click
 prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) currentIndex--;
+    if(currentIndex > 0) currentIndex--;
     updateCarousel();
 });
 
 nextBtn.addEventListener('click', () => {
-    if (currentIndex < slides.length - 1) currentIndex++;
+    if(currentIndex < images.length - 1) currentIndex++;
     updateCarousel();
 });
 
-// Swipe support for mobile
+// Swipe support
 let startX = 0;
+const container = document.querySelector('.carousel-images');
+
 container.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
 });
@@ -187,7 +177,7 @@ container.addEventListener('touchstart', e => {
 container.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     if (endX - startX > 50 && currentIndex > 0) currentIndex--;
-    else if (startX - endX > 50 && currentIndex < slides.length - 1) currentIndex++;
+    else if (startX - endX > 50 && currentIndex < images.length - 1) currentIndex++;
     updateCarousel();
 });
 
