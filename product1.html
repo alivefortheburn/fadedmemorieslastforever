@@ -9,65 +9,16 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <style>
-/* ===== Carousel Styles ===== */
-.carousel-container {
+/* ===== Product Page Carousel ===== */
+.product-page {
     position: relative;
-    width: 55%; /* slightly wider to accommodate bigger images */
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.carousel-images img {
-    flex: 0 0 100%; /* each image takes full carousel width */
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Arrows */
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    background: rgba(0,0,0,0.3);
-    border: none;
-    cursor: pointer;
-    padding: 0.2rem 0.6rem;
-    border-radius: 5px;
     z-index: 2;
-}
-
-.carousel-arrow:hover {
-    background: rgba(0,0,0,0.6);
-}
-
-#prev {
-    left: -50px; /* push outside the image */
-}
-
-#next {
-    right: -50px;
-}
-
-/* ===== Product Page Styling ===== */
-body {
-    margin: 0;
-    padding: 0;
-    background: #000;
-    font-family: 'Google Sans Code', monospace;
-    overflow: hidden;
-    color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .product-bg {
@@ -80,23 +31,69 @@ body {
     z-index: -1;
 }
 
-.product-page {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
-    padding: 2rem;
+/* Carousel Container */
+.carousel-container {
     position: relative;
-    z-index: 2;
+    width: 45%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ===== Product Info Styling ===== */
+/* Carousel Images */
+.carousel-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-images img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    transition: transform 0.5s ease;
+}
+
+/* Carousel Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.carousel-arrow.left {
+    left: -20px;
+}
+
+.carousel-arrow.right {
+    right: -20px;
+}
+
+/* Product Info */
 .product-info {
-    max-width: 40%;
-    background: rgba(0,0,0,0.6); /* semi-transparent black */
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
+    width: 45%;
+    color: white;
+    padding: 1rem;
+    background: rgba(0,0,0,0.6);
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product-info h1 {
@@ -106,27 +103,42 @@ body {
 
 .product-info p {
     font-size: 1rem;
-    line-height: 1.5rem;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .product-page {
+        flex-direction: column;
+    }
+    .carousel-container, .product-info {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+    .carousel-arrow.left {
+        left: 5px;
+    }
+    .carousel-arrow.right {
+        right: 5px;
+    }
 }
 </style>
 </head>
 <body>
 
-<!-- Background Video -->
-<video class="product-bg" autoplay playsinline loop muted>
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
-<!-- Product Content -->
 <div class="product-page">
     <!-- Carousel -->
     <div class="carousel-container">
-        <button id="prev" class="carousel-arrow">&#10094;</button>
+        <button class="carousel-arrow left">&#10094;</button>
         <div class="carousel-images">
             <img src="assets/images/uzifront.png" alt="Uzi Front">
             <img src="assets/images/uziback.png" alt="Uzi Back">
         </div>
-        <button id="next" class="carousel-arrow">&#10095;</button>
+        <button class="carousel-arrow right">&#10095;</button>
     </div>
 
     <!-- Product Info -->
@@ -138,29 +150,34 @@ body {
 
 <script>
 const images = document.querySelectorAll('.carousel-images img');
-const container = document.querySelector('.carousel-images');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
+const leftArrow = document.querySelector('.carousel-arrow.left');
+const rightArrow = document.querySelector('.carousel-arrow.right');
 let currentIndex = 0;
 
 function updateCarousel() {
-    const containerWidth = container.clientWidth;
-    container.style.transform = `translateX(${-currentIndex * containerWidth}px)`;
+    const offset = -currentIndex * 100;
+    images.forEach((img, i) => {
+        img.style.transform = `translateX(${offset}%)`;
+    });
 }
 
-// Arrow click
-prevBtn.addEventListener('click', () => {
-    if(currentIndex > 0) currentIndex--;
-    updateCarousel();
+// Arrow click events
+leftArrow.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+});
+rightArrow.addEventListener('click', () => {
+    if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateCarousel();
+    }
 });
 
-nextBtn.addEventListener('click', () => {
-    if(currentIndex < images.length - 1) currentIndex++;
-    updateCarousel();
-});
-
-// Swipe support
+// Swipe support for mobile
 let startX = 0;
+const container = document.querySelector('.carousel-images');
 container.addEventListener('touchstart', e => startX = e.touches[0].clientX);
 container.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
