@@ -25,17 +25,13 @@
     display: flex;
     overflow: hidden;
     width: 100%;
-    max-height: 70vh; /* limit height to prevent cutoff */
+    scroll-behavior: smooth;
 }
 
 .carousel-images img {
-    max-width: 100%;
-    max-height: 70vh; /* keep images within viewport */
-    width: auto;
+    width: 100%;
     height: auto;
-    margin: 0 auto;
     object-fit: contain;
-    transition: transform 0.5s ease;
     flex-shrink: 0;
 }
 
@@ -43,7 +39,7 @@
 .carousel-dots {
     display: flex;
     justify-content: center;
-    margin-top: 8px; /* closer to images */
+    margin-top: 10px;
 }
 
 .carousel-dots button {
@@ -85,39 +81,28 @@ body {
 .product-page {
     position: relative;
     z-index: 2;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: wrap;
-    padding-top: 5vh;
     text-align: center;
+    padding-top: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.product-info {
-    flex: 1 1 300px;
-    padding: 1rem 2rem;
+.product-page .product-info {
+    max-width: 30%;
     color: white;
 }
 
-.product-info h1 {
+.product-page .product-info h1 {
     font-size: 2rem;
     letter-spacing: 2px;
 }
 
-.product-info p {
+.product-page .product-info p {
     font-size: 1rem;
     line-height: 1.5;
-}
-
-/* ===== Mobile adjustments ===== */
-@media (max-width: 600px) {
-    .carousel-container {
-        width: 95%;
-    }
-    .carousel-images {
-        max-height: 50vh;
-    }
 }
 </style>
 </head>
@@ -130,6 +115,7 @@ body {
 
 <!-- Product Content -->
 <div class="product-page">
+    <!-- Carousel -->
     <div class="carousel-container">
         <div class="carousel-images">
             <img src="assets/images/uzifront.png" alt="Uzi Front">
@@ -142,22 +128,27 @@ body {
             <button></button>
         </div>
     </div>
+
+    <!-- Product Info -->
     <div class="product-info">
         <h1>UZI</h1>
-        <p>Placeholder text for product description.</p>
+        <p>Placeholder text for product description. You can write details about the art piece, pricing, or anything else here.</p>
     </div>
 </div>
 
 <script>
 const images = document.querySelectorAll('.carousel-images img');
 const dots = document.querySelectorAll('.carousel-dots button');
+const container = document.querySelector('.carousel-images');
 let currentIndex = 0;
 
 function updateCarousel() {
-    const offset = -currentIndex * 100;
-    images.forEach((img, i) => {
-        img.style.transform = `translateX(${offset}%)`;
+    const containerWidth = container.offsetWidth;
+    container.scrollTo({
+        left: currentIndex * containerWidth,
+        behavior: 'smooth'
     });
+
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
     });
@@ -173,7 +164,6 @@ dots.forEach((dot, i) => {
 
 // Swipe support for mobile
 let startX = 0;
-const container = document.querySelector('.carousel-images');
 
 container.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
@@ -186,6 +176,7 @@ container.addEventListener('touchend', e => {
     updateCarousel();
 });
 
+// Initialize carousel
 updateCarousel();
 </script>
 
