@@ -64,31 +64,35 @@ body, html {
 
 /* Make third image slightly smaller */
 .carousel-images img:last-child {
-    max-width: 85%;  /* slightly smaller than others */
+    max-width: 85%;
     margin: 0 auto;
 }
 
-/* Carousel dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.carousel-dots button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+/* ===== Carousel Arrows ===== */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
     border: none;
-    background: #fff;
-    opacity: 0.5;
+    color: #fff;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    z-index: 3;
+    transition: background 0.3s ease;
 }
 
-.carousel-dots button.active {
-    opacity: 1;
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-arrow-left {
+    left: 10px;
+}
+
+.carousel-arrow-right {
+    right: 10px;
 }
 
 /* ===== Text Column ===== */
@@ -98,8 +102,9 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; /* center the text */
     max-width: 500px;
+    text-align: center;
 }
 
 .product-info h1 {
@@ -130,11 +135,9 @@ body, html {
             <img src="assets/images/uziback.png" alt="Uzi Back">
             <img src="assets/images/funhouse.png" alt="Funhouse">
         </div>
-        <div class="carousel-dots">
-            <button class="active"></button>
-            <button></button>
-            <button></button>
-        </div>
+        <!-- Arrows -->
+        <button class="carousel-arrow carousel-arrow-left">&#10094;</button>
+        <button class="carousel-arrow carousel-arrow-right">&#10095;</button>
     </div>
 
     <!-- Text Right -->
@@ -146,31 +149,29 @@ body, html {
 
 <script>
 const images = document.querySelectorAll('.carousel-images img');
-const dots = document.querySelectorAll('.carousel-dots button');
+const container = document.querySelector('.carousel-images');
+const prevBtn = document.querySelector('.carousel-arrow-left');
+const nextBtn = document.querySelector('.carousel-arrow-right');
 let currentIndex = 0;
 
 function updateCarousel() {
     const offset = -currentIndex * 100;
-    images.forEach((img, i) => {
-        img.style.transform = `translateX(${offset}%)`;
-    });
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
-    });
+    container.style.transform = `translateX(${offset}%)`;
 }
 
-// Dot click
-dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateCarousel();
-    });
+// Arrow clicks
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) currentIndex--;
+    updateCarousel();
+});
+
+nextBtn.addEventListener('click', () => {
+    if (currentIndex < images.length - 1) currentIndex++;
+    updateCarousel();
 });
 
 // Swipe support for mobile
 let startX = 0;
-const container = document.querySelector('.carousel-images');
-
 container.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
 });
