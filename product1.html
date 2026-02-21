@@ -7,16 +7,163 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+/* ===== Product Page Carousel Styling ===== */
+.product-page {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.carousel-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    height: 80%;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-images {
+    flex: 1 1 60%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.carousel-images img {
+    min-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-dots span {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.carousel-dots span.active {
+    opacity: 1;
+}
+
+/* Placeholder text on the right */
+.product-text {
+    flex: 1 1 40%;
+    padding-left: 2rem;
+    color: white;
+    font-family: 'Google Sans Code', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .carousel-container {
+        flex-direction: column;
+        height: auto;
+    }
+    .carousel-images, .product-text {
+        flex: 1 1 100%;
+        padding: 1rem;
+    }
+}
+</style>
 </head>
 <body>
 
-<video class="product-bg" autoplay playsinline loop>
+<!-- Background Video -->
+<video class="product-bg" autoplay playsinline loop muted>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
+<!-- Product Content -->
 <div class="product-page">
-    <h1>uzi</h1>
+    <div class="carousel-container">
+        <!-- Carousel Images -->
+        <div class="carousel-images">
+            <img src="assets/images/uzifront.png" alt="Uzi Front">
+            <img src="assets/images/uziback.png" alt="Uzi Back">
+            <img src="assets/images/funhouse.png" alt="Funhouse">
+            <!-- Dots -->
+            <div class="carousel-dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Placeholder Text -->
+        <div class="product-text">
+            <h1>Uzi Product Page</h1>
+            <p>This is placeholder text for the Uzi product. You can replace this with product details, descriptions, or any info you want to display alongside the carousel.</p>
+        </div>
+    </div>
 </div>
+
+<script>
+// Carousel JS
+const carouselImages = document.querySelectorAll('.carousel-images img');
+const dots = document.querySelectorAll('.carousel-dots span');
+let currentIndex = 0;
+
+function showSlide(index) {
+    if (index < 0) index = carouselImages.length - 1;
+    if (index >= carouselImages.length) index = 0;
+    carouselImages.forEach((img, i) => {
+        img.style.transform = `translateX(-${index * 100}%)`;
+    });
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+    currentIndex = index;
+}
+
+// Click dots to change slide
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => showSlide(i));
+});
+
+// Optional: swipe support for mobile
+let startX = 0;
+let isDragging = false;
+const carousel = document.querySelector('.carousel-images');
+
+carousel.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+carousel.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    if (diff > 50) { showSlide(currentIndex - 1); isDragging = false; }
+    if (diff < -50) { showSlide(currentIndex + 1); isDragging = false; }
+});
+
+carousel.addEventListener('touchend', e => { isDragging = false; });
+
+// Initialize
+showSlide(0);
+</script>
 
 </body>
 </html>
