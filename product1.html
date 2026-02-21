@@ -58,14 +58,8 @@ body, html {
 .carousel-images img {
     flex: 0 0 100%;
     object-fit: contain;
-    max-width: 100%;
+    max-width: 110%; /* Made first two images slightly bigger */
     height: auto;
-}
-
-/* Make third image slightly smaller */
-.carousel-images img:last-child {
-    max-width: 85%;
-    margin: 0 auto;
 }
 
 /* ===== Carousel Arrows ===== */
@@ -102,7 +96,7 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* center the text */
+    align-items: center;
     max-width: 500px;
     text-align: center;
 }
@@ -133,7 +127,6 @@ body, html {
         <div class="carousel-images">
             <img src="assets/images/uzifront.png" alt="Uzi Front">
             <img src="assets/images/uziback.png" alt="Uzi Back">
-            <img src="assets/images/funhouse.png" alt="Funhouse">
         </div>
         <!-- Arrows -->
         <button class="carousel-arrow carousel-arrow-left">&#10094;</button>
