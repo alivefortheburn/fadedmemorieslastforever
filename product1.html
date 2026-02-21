@@ -41,12 +41,12 @@ body {
 
 /* ===== Left Carousel / Image Container ===== */
 .carousel-container {
-    width: 45%;
+    width: 55%; /* increased width for bigger images */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 400px;
+    min-height: 500px; /* taller to accommodate bigger images */
 }
 
 .carousel-container img {
@@ -65,31 +65,32 @@ body {
 /* Fade animation for two images */
 @keyframes fadeCycle1 {
     0% { opacity: 1; }
-    45% { opacity: 1; }
+    40% { opacity: 1; }
     50% { opacity: 0; }
-    95% { opacity: 0; }
+    90% { opacity: 0; }
     100% { opacity: 1; }
 }
 
 @keyframes fadeCycle2 {
     0% { opacity: 0; }
-    45% { opacity: 0; }
+    40% { opacity: 0; }
     50% { opacity: 1; }
-    95% { opacity: 1; }
+    90% { opacity: 1; }
     100% { opacity: 0; }
 }
 
+/* Apply animations with slower duration */
 .carousel-container img:first-child {
-    animation: fadeCycle1 6s infinite;
+    animation: fadeCycle1 8s infinite; /* slower, 8 seconds */
 }
 
 .carousel-container img:last-child {
-    animation: fadeCycle2 6s infinite;
+    animation: fadeCycle2 8s infinite;
 }
 
 /* ===== Right Text Container ===== */
 .product-info {
-    width: 45%;
+    width: 40%;
     color: white;
     padding-left: 2rem;
     display: flex;
@@ -121,6 +122,7 @@ body {
         width: 90%;
         padding: 0;
         margin-bottom: 2rem;
+        min-height: 300px;
     }
 }
 </style>
