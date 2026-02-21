@@ -41,12 +41,12 @@ body {
 
 /* ===== Left Carousel / Image Container ===== */
 .carousel-container {
-    width: 60%;
+    width: 60%; /* slightly bigger for larger images */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 600px;
+    min-height: 600px; /* taller so images are bigger */
 }
 
 .carousel-container img {
@@ -59,32 +59,32 @@ body {
     bottom: 0;
     margin: auto;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 2s ease-in-out;
 }
 
 /* Fade animation for two images */
 @keyframes fadeCycle1 {
     0% { opacity: 1; }
-    40% { opacity: 1; }
+    45% { opacity: 1; }
     50% { opacity: 0; }
-    90% { opacity: 0; }
+    95% { opacity: 0; }
     100% { opacity: 1; }
 }
 
 @keyframes fadeCycle2 {
     0% { opacity: 0; }
-    40% { opacity: 0; }
+    45% { opacity: 0; }
     50% { opacity: 1; }
-    90% { opacity: 1; }
+    95% { opacity: 1; }
     100% { opacity: 0; }
 }
 
 .carousel-container img:first-child {
-    animation: fadeCycle1 6s infinite;
+    animation: fadeCycle1 8s infinite;
 }
 
 .carousel-container img:last-child {
-    animation: fadeCycle2 6s infinite;
+    animation: fadeCycle2 8s infinite;
 }
 
 /* ===== Right Text Container ===== */
@@ -95,7 +95,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.5); /* opaque black behind text */
     border-radius: 8px;
     min-height: 200px;
 }
@@ -112,32 +112,35 @@ body {
     text-align: center;
 }
 
-/* ===== MOBILE ADJUSTMENTS ===== */
+/* ===== Mobile adjustments ===== */
 @media (max-width: 800px) {
-    /* Stack carousel above text */
     .product-page {
         flex-direction: column;
     }
-
-    /* Make images bigger and move them down */
-    .carousel-container {
+    .carousel-container, .product-info {
         width: 90%;
-        min-height: 500px; /* taller for bigger images */
+        padding: 0;
         margin-bottom: 2rem;
+        min-height: 400px;
     }
 
-    .carousel-container img {
-        max-height: 450px; /* increase size on mobile */
-    }
-
-    /* Shrink header text a bit */
+    /* Header on one line */
     .product-info h1 {
-        font-size: 1.5rem;
+        font-size: 1.5rem;    /* smaller font to fit on one line */
+        white-space: nowrap;   /* prevent wrapping */
+        overflow: hidden;      /* hide if slightly too long */
+        text-overflow: ellipsis;
     }
 
-    /* Hide background video on mobile */
-    .product-bg {
-        display: none;
+    /* Bigger shirt and moved down for mobile */
+    .carousel-container img {
+        max-height: 300px; /* larger but contained */
+        top: 20px;         /* moves shirt down a bit */
+    }
+    
+    /* Optional: reduce carousel container min-height on mobile */
+    .carousel-container {
+        min-height: 350px;
     }
 }
 </style>
