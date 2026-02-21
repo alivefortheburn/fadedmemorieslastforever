@@ -49,17 +49,28 @@ body, html {
     overflow: hidden;
 }
 
+/* Each slide wrapper */
+.carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image inside slide */
+.carousel-slide img {
+    object-fit: contain;
+    max-width: 110%; /* Bigger images */
+    max-height: 100%;
+    height: auto;
+    width: auto;
+}
+
+/* Carousel wrapper */
 .carousel-images {
     display: flex;
     width: 100%;
     transition: transform 0.5s ease;
-}
-
-.carousel-images img {
-    flex: 0 0 100%;
-    object-fit: contain;
-    max-width: 110%; /* Made first two images slightly bigger */
-    height: auto;
 }
 
 /* ===== Carousel Arrows ===== */
@@ -125,8 +136,12 @@ body, html {
     <!-- Carousel Left -->
     <div class="carousel-container">
         <div class="carousel-images">
-            <img src="assets/images/uzifront.png" alt="Uzi Front">
-            <img src="assets/images/uziback.png" alt="Uzi Back">
+            <div class="carousel-slide">
+                <img src="assets/images/uzifront.png" alt="Uzi Front">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/uziback.png" alt="Uzi Back">
+            </div>
         </div>
         <!-- Arrows -->
         <button class="carousel-arrow carousel-arrow-left">&#10094;</button>
@@ -141,7 +156,7 @@ body, html {
 </div>
 
 <script>
-const images = document.querySelectorAll('.carousel-images img');
+const slides = document.querySelectorAll('.carousel-slide');
 const container = document.querySelector('.carousel-images');
 const prevBtn = document.querySelector('.carousel-arrow-left');
 const nextBtn = document.querySelector('.carousel-arrow-right');
@@ -159,7 +174,7 @@ prevBtn.addEventListener('click', () => {
 });
 
 nextBtn.addEventListener('click', () => {
-    if (currentIndex < images.length - 1) currentIndex++;
+    if (currentIndex < slides.length - 1) currentIndex++;
     updateCarousel();
 });
 
@@ -172,7 +187,7 @@ container.addEventListener('touchstart', e => {
 container.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     if (endX - startX > 50 && currentIndex > 0) currentIndex--;
-    else if (startX - endX > 50 && currentIndex < images.length - 1) currentIndex++;
+    else if (startX - endX > 50 && currentIndex < slides.length - 1) currentIndex++;
     updateCarousel();
 });
 
