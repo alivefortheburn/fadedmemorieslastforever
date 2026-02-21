@@ -103,6 +103,7 @@ body {
     height: auto;
     margin: 0 auto;
     object-fit: contain;
+    cursor: pointer;
 }
 
 /* ===== Show helper ===== */
@@ -126,4 +127,33 @@ body {
     #image-gallery img {
         width: 95%;
     }
+}
+
+/* ========================================= */
+/* ===== PRODUCT PAGE STYLING (NEW) ====== */
+/* ========================================= */
+
+.product-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.product-page {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-page h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
 }
