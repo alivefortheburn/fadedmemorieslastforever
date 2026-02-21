@@ -41,12 +41,12 @@ body {
 
 /* ===== Left Carousel / Image Container ===== */
 .carousel-container {
-    width: 55%; /* increased width for bigger images */
+    width: 60%; /* slightly bigger for larger images */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 500px; /* taller to accommodate bigger images */
+    min-height: 600px; /* taller so images are bigger */
 }
 
 .carousel-container img {
@@ -79,13 +79,13 @@ body {
     100% { opacity: 0; }
 }
 
-/* Apply animations with slower duration */
+/* Apply faster animations with bigger images */
 .carousel-container img:first-child {
-    animation: fadeCycle1 8s infinite; /* slower, 8 seconds */
+    animation: fadeCycle1 6s infinite; /* faster cycle */
 }
 
 .carousel-container img:last-child {
-    animation: fadeCycle2 8s infinite;
+    animation: fadeCycle2 6s infinite;
 }
 
 /* ===== Right Text Container ===== */
@@ -122,7 +122,7 @@ body {
         width: 90%;
         padding: 0;
         margin-bottom: 2rem;
-        min-height: 300px;
+        min-height: 400px;
     }
 }
 </style>
