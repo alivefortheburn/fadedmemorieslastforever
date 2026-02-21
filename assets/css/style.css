@@ -16,17 +16,40 @@ body {
     width: 100vw;
     height: 100vh;
     background: #000;
-    color: #00ff00;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Google Sans Code', monospace;
-    font-size: 1.5rem; /* starting text size */
+    font-size: 1.5rem;
     text-transform: lowercase;
     letter-spacing: 1px;
     cursor: pointer;
     z-index: 9999;
     text-align: center;
+}
+
+/* ===== Tap Overlay Text Shine Effect ===== */
+#tap-overlay h1 {
+    color: #c0c0c0; 
+    background: linear-gradient(
+        120deg,
+        #00ff00 30%,
+        #ffffff 50%,
+        #00ff00 70%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 /* ===== Background Video ===== */
@@ -63,7 +86,7 @@ body {
 #image-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px 20px; /* vertical gap bigger than horizontal gap */
+    gap: 40px 20px;
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -102,6 +125,5 @@ body {
     }
     #image-gallery img {
         width: 95%;
-    
     }
 }
