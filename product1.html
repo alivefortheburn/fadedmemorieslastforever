@@ -39,9 +39,13 @@
 }
 
 .carousel-images img {
-    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
+    margin: 0 auto;
     transition: transform 0.5s ease;
+}
 }
 
 .carousel-dots {
@@ -93,7 +97,7 @@
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay playsinline loop muted>
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
