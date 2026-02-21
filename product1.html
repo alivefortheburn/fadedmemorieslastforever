@@ -11,31 +11,25 @@
 <style>
 /* ===== Carousel Styles ===== */
 .carousel-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%; /* slightly smaller than full width for spacing */
+    position: relative;
+    width: 50%;
     max-width: 500px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-images {
     display: flex;
-    overflow: hidden;
-    width: 100%;
-    justify-content: center; /* center images horizontally */
-    align-items: center;     /* center images vertically */
+    transition: transform 0.5s ease;
 }
 
 .carousel-images img {
-    max-width: 95%; /* larger image size */
+    flex: 0 0 100%; /* each image takes full carousel width */
+    max-width: 100%;
     height: auto;
-    flex-shrink: 0;
-    margin: 0 auto;
-    transition: transform 0.5s ease;
     display: block;
 }
 
@@ -45,13 +39,13 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 2.5rem;
-    color: rgba(255, 255, 255, 0.6);
-    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0,0,0,0.3);
     border: none;
     cursor: pointer;
     padding: 0.2rem 0.6rem;
     border-radius: 5px;
-    z-index: 3;
+    z-index: 2;
 }
 
 .carousel-arrow:hover {
@@ -91,9 +85,9 @@ body {
     justify-content: space-around;
     align-items: center;
     height: 100vh;
+    padding: 2rem;
     position: relative;
     z-index: 2;
-    padding: 2rem;
 }
 
 /* ===== Product Info Styling ===== */
@@ -119,7 +113,7 @@ body {
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay playsinline loop muted>
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
@@ -144,15 +138,14 @@ body {
 
 <script>
 const images = document.querySelectorAll('.carousel-images img');
+const container = document.querySelector('.carousel-images');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 let currentIndex = 0;
 
 function updateCarousel() {
-    const offset = -currentIndex * 100;
-    images.forEach((img, i) => {
-        img.style.transform = `translateX(${offset}%)`;
-    });
+    const containerWidth = container.clientWidth;
+    container.style.transform = `translateX(${-currentIndex * containerWidth}px)`;
 }
 
 // Arrow click
@@ -168,12 +161,7 @@ nextBtn.addEventListener('click', () => {
 
 // Swipe support
 let startX = 0;
-const container = document.querySelector('.carousel-images');
-
-container.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-});
-
+container.addEventListener('touchstart', e => startX = e.touches[0].clientX);
 container.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     if (endX - startX > 50 && currentIndex > 0) currentIndex--;
