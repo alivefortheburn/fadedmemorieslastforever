@@ -96,6 +96,7 @@ body {
     opacity: 0;
     transition: opacity 1s ease;
     box-sizing: border-box;
+    pointer-events: none;
 }
 
 #image-gallery img {
