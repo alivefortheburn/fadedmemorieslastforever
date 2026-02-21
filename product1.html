@@ -14,8 +14,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
-    max-width: 800px;
+    width: 50%; /* slightly smaller than before */
+    max-width: 700px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -33,6 +33,13 @@
     height: auto;
     object-fit: contain;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Make third image slightly smaller */
+.carousel-images img:nth-child(3) {
+    width: 90%; /* reduce width a little */
+    margin: 0 auto;
 }
 
 /* Carousel dots */
@@ -109,7 +116,7 @@ body {
 <body>
 
 <!-- Background Video -->
-<video class="product-bg" autoplay muted playsinline loop>
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
