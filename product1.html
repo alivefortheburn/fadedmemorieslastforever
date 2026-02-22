@@ -115,44 +115,48 @@ body {
 /* ===== Mobile adjustments ===== */
 @media (max-width: 800px) {
 
+    /* ✅ Allow scrolling on mobile */
+    body {
+        overflow-y: auto;
+    }
+
     .product-page {
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 40px; /* pushes everything slightly down */
+        align-items: center;
+        height: auto;          /* allow full height */
+        min-height: 100vh;
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 
-    .carousel-container,
-    .product-info {
-        width: 90%;
-        padding: 0;
-        margin-bottom: 1.5rem;
-    }
-
-    /* 🔥 Make shirts MUCH bigger and move them down */
+    /* 🔥 MUCH bigger image area */
     .carousel-container {
-        min-height: 500px; /* taller container */
+        width: 95%;
+        min-height: 650px;   /* taller container */
     }
 
     .carousel-container img {
-        max-height: 420px;  /* significantly bigger */
-        top: 60px;          /* moves shirt down */
+        max-height: 550px;   /* significantly bigger */
+        top: 80px;           /* move image down */
     }
 
-    /* 🔥 Make black rectangle skinnier */
+    /* 🔥 Skinnier black rectangle */
     .product-info {
+        width: 85%;
+        padding: 0.75rem 1rem;
+        min-height: auto;
         background: rgba(0,0,0,0.5);
-        padding: 0.75rem 1rem;   /* less height */
-        width: 85%;              /* slightly narrower */
-        min-height: auto;        /* remove extra height */
     }
 
-    /* Keep header on one line */
+    /* Keep header one line */
     .product-info h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
 }
 </style>
 </head>
