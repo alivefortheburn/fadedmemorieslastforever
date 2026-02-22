@@ -114,33 +114,44 @@ body {
 
 /* ===== Mobile adjustments ===== */
 @media (max-width: 800px) {
+
     .product-page {
         flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px; /* pushes everything slightly down */
     }
-    .carousel-container, .product-info {
+
+    .carousel-container,
+    .product-info {
         width: 90%;
         padding: 0;
-        margin-bottom: 2rem;
-        min-height: 400px;
+        margin-bottom: 1.5rem;
     }
 
-    /* Header on one line */
-    .product-info h1 {
-        font-size: 1.5rem;    /* smaller font to fit on one line */
-        white-space: nowrap;   /* prevent wrapping */
-        overflow: hidden;      /* hide if slightly too long */
-        text-overflow: ellipsis;
-    }
-
-    /* Bigger shirt and moved down for mobile */
-    .carousel-container img {
-        max-height: 300px; /* larger but contained */
-        top: 20px;         /* moves shirt down a bit */
-    }
-    
-    /* Optional: reduce carousel container min-height on mobile */
+    /* 🔥 Make shirts MUCH bigger and move them down */
     .carousel-container {
-        min-height: 350px;
+        min-height: 500px; /* taller container */
+    }
+
+    .carousel-container img {
+        max-height: 420px;  /* significantly bigger */
+        top: 60px;          /* moves shirt down */
+    }
+
+    /* 🔥 Make black rectangle skinnier */
+    .product-info {
+        background: rgba(0,0,0,0.5);
+        padding: 0.75rem 1rem;   /* less height */
+        width: 85%;              /* slightly narrower */
+        min-height: auto;        /* remove extra height */
+    }
+
+    /* Keep header on one line */
+    .product-info h1 {
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 </style>
