@@ -115,7 +115,7 @@ body {
 /* ===== Mobile adjustments ===== */
 @media (max-width: 800px) {
 
-    /* ✅ Allow scrolling on mobile */
+    /* Allow scrolling on mobile */
     body {
         overflow-y: auto;
     }
@@ -124,39 +124,38 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        height: auto;          /* allow full height */
+        height: auto;
         min-height: 100vh;
-        padding-top: 60px;
+        padding-top: 20px;   /* less top padding (moves everything up) */
         padding-bottom: 60px;
     }
 
-    /* 🔥 MUCH bigger image area */
+    /* 🔥 Bigger + Higher */
     .carousel-container {
         width: 95%;
-        min-height: 650px;   /* taller container */
+        min-height: 600px;   /* still tall */
     }
 
     .carousel-container img {
-        max-height: 550px;   /* significantly bigger */
-        top: 80px;           /* move image down */
+        max-height: 620px;   /* BIGGER */
+        top: 20px;           /* moved up */
     }
 
-    /* 🔥 Skinnier black rectangle */
+    /* Skinnier black rectangle */
     .product-info {
         width: 85%;
-        padding: 0.75rem 1rem;
+        padding: 0.6rem 1rem;
         min-height: auto;
         background: rgba(0,0,0,0.5);
     }
 
-    /* Keep header one line */
+    /* Header stays one line */
     .product-info h1 {
         font-size: 1.4rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
 }
 </style>
 </head>
