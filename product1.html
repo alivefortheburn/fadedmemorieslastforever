@@ -3,19 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UZI</title>
+<title>"Feel Like Uzi" Shirt</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+/* ===== Product Page Styling ===== */
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: 'Google Sans Code', monospace;
+    overflow: hidden;
+    color: white;
+}
+
+.product-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.product-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* ===== Left Carousel / Image Container ===== */
+.carousel-container {
+    width: 60%; /* slightly bigger for larger images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 600px; /* taller so images are bigger */
+}
+
+.carousel-container img {
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+/* Fade animation for two images */
+@keyframes fadeCycle1 {
+    0% { opacity: 1; }
+    45% { opacity: 1; }
+    50% { opacity: 0; }
+    95% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeCycle2 {
+    0% { opacity: 0; }
+    45% { opacity: 0; }
+    50% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.carousel-container img:first-child {
+    animation: fadeCycle1 8s infinite;
+}
+
+.carousel-container img:last-child {
+    animation: fadeCycle2 8s infinite;
+}
+
+/* ===== Right Text Container ===== */
+.product-info {
+    width: 40%;
+    color: white;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0,0,0,0.5); /* opaque black behind text */
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+.product-info h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.product-info p {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* ===== Mobile adjustments ===== */
+@media (max-width: 800px) {
+    .product-page {
+        flex-direction: column;
+    }
+    .carousel-container, .product-info {
+        width: 90%;
+        padding: 0;
+        margin-bottom: 2rem;
+        min-height: 400px;
+    }
+
+    /* Header on one line */
+    .product-info h1 {
+        font-size: 1.5rem;    /* smaller font to fit on one line */
+        white-space: nowrap;   /* prevent wrapping */
+        overflow: hidden;      /* hide if slightly too long */
+        text-overflow: ellipsis;
+    }
+
+    /* Bigger shirt and moved down for mobile */
+    .carousel-container img {
+        max-height: 300px; /* larger but contained */
+        top: 20px;         /* moves shirt down a bit */
+    }
+    
+    /* Optional: reduce carousel container min-height on mobile */
+    .carousel-container {
+        min-height: 350px;
+    }
+}
+</style>
 </head>
 <body>
 
-<video class="product-bg" autoplay muted playsinline loop>
+<!-- Background Video -->
+<video class="product-bg" autoplay playsinline loop>
     <source src="assets/video/uzi.mp4" type="video/mp4">
 </video>
 
+<!-- Product Content -->
 <div class="product-page">
-    <h1>uzi</h1>
+    <div class="carousel-container">
+        <img src="assets/images/uzifront.png" alt="Uzi Front">
+        <img src="assets/images/uziback.png" alt="Uzi Back">
+    </div>
+    <div class="product-info">
+        <h1>"Feel Like Uzi"</h1>
+        <p>
+           -220 GSM<br>
+           -100% cotton<br>
+           -Slight oversize fit<br>
+           -Inspired by Prettifun's "Funhouse"
+        </p>
+    </div>
 </div>
 
 </body>

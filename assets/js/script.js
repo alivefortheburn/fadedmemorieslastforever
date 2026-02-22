@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Show gallery after logo fade out
                 setTimeout(() => {
                     gallery.classList.add("show");
+                    gallery.style.pointerEvents = "auto";
                 }, 1200);
             }, 3000);
         }, 2000);
