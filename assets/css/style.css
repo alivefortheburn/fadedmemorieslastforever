@@ -1,4 +1,3 @@
-/* ================= RESET ================= */
 body {
     margin: 0;
     padding: 0;
@@ -8,7 +7,7 @@ body {
     color: white;
 }
 
-/* ================= ENTER SCREEN ================= */
+/* ENTER */
 #tap-overlay {
     position: fixed;
     inset: 0;
@@ -20,6 +19,7 @@ body {
     cursor: pointer;
 }
 
+/* VIDEO */
 #bg-video {
     position: fixed;
     inset: 0;
@@ -29,7 +29,20 @@ body {
     z-index: 0;
 }
 
-/* ================= GALLERY ================= */
+/* LOGO */
+#main-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    opacity: 0;
+    z-index: 5;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+/* GALLERY */
 #image-gallery {
     position: relative;
     z-index: 2;
@@ -42,12 +55,12 @@ body {
 }
 
 #image-gallery img {
-    width: 75%;
+    width: 85%;
     margin: auto;
     cursor: pointer;
 }
 
-/* ================= PRODUCT VIEW ================= */
+/* PRODUCT VIEW */
 #product-view {
     display: none;
     position: relative;
@@ -65,49 +78,69 @@ body {
     padding: 2rem;
 }
 
-/* images */
+/* IMAGES */
 .product-images {
-    width: 55%;
+    width: 60%;
     height: 80vh;
     position: relative;
 }
 
 .product-images img {
     position: absolute;
+    inset: 0;
+    margin: auto;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    inset: 0;
-    margin: auto;
     opacity: 0;
-    transition: opacity 1.5s ease;
+    transition: opacity 2s ease-in-out;
 }
 
-/* text */
+.show {
+    opacity: 1 !important;
+}
+
+/* TEXT */
 .product-info {
-    width: 40%;
-    background: rgba(0,0,0,0.5);
+    width: 38%;
     padding: 1rem;
+    background: transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.product-info h1,
+.product-info p {
+    margin: 0;
+}
+
+/* BACK BUTTON */
 #back-btn {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 9999;
     background: transparent;
     border: none;
     color: white;
     cursor: pointer;
 }
 
-/* active image */
-.show {
-    opacity: 1 !important;
+/* GALLERY SIZE */
+#image-gallery img {
+    width: 85%;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
+/* PRODUCT IMAGE SIZE BOOST */
+.product-images {
+    width: 60%;
+}
 
+/* MOBILE */
+@media (max-width: 600px) {
     #image-gallery {
         grid-template-columns: 1fr;
     }
