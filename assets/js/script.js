@@ -2,9 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const overlay = document.getElementById("tap-overlay");
     const video = document.getElementById("bg-video");
+    const logo = document.getElementById("main-logo");
     const gallery = document.getElementById("image-gallery");
     const productView = document.getElementById("product-view");
-    const logo = document.getElementById("main-logo");
+
+    let interval;
 
     overlay.addEventListener("click", () => {
         overlay.style.display = "none";
@@ -12,13 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         video.muted = false;
         video.play();
 
+        // LOGO SEQUENCE
         logo.style.opacity = "1";
 
         setTimeout(() => {
             logo.style.opacity = "0";
 
             setTimeout(() => {
-                gallery.style.display = "grid";
+                gallery.classList.add("active");
             }, 800);
 
         }, 1500);
@@ -51,12 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    let interval;
-
     window.showProduct = (key) => {
+
         const p = data[key];
 
-        gallery.style.display = "none";
+        gallery.classList.remove("active");
         productView.style.display = "block";
 
         document.getElementById("ptitle").innerHTML = p.title;
@@ -72,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function cycle() {
             if (state === 0) {
-                img2.classList.remove("show");
                 img1.classList.add("show");
+                img2.classList.remove("show");
                 state = 1;
             } else {
                 img1.classList.remove("show");
@@ -87,12 +89,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         clearInterval(interval);
         interval = setInterval(cycle, 3500);
+
+        // lock scroll completely on product page
+        document.body.style.overflow = "hidden";
     };
 
     window.hideProduct = () => {
+
         productView.style.display = "none";
-        gallery.style.display = "grid";
+        gallery.classList.add("active");
+
         clearInterval(interval);
+
+        // restore scroll (main page only)
+        document.body.style.overflow = "auto";
     };
 
 });
