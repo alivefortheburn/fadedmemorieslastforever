@@ -3,8 +3,18 @@ body {
     padding: 0;
     background: #000;
     font-family: 'Google Sans Code', monospace;
-    overflow-x: hidden;
     color: white;
+    overflow-x: hidden;
+}
+
+/* FULLSCREEN VIDEO FIX */
+#bg-video {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
 }
 
 /* ENTER */
@@ -16,20 +26,9 @@ body {
     align-items: center;
     background: #000;
     z-index: 9999;
-    cursor: pointer;
 }
 
-/* VIDEO */
-#bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 0;
-}
-
-/* LOGO */
+/* LOGO INTRO */
 #main-logo {
     position: fixed;
     top: 50%;
@@ -38,7 +37,7 @@ body {
     width: 180px;
     opacity: 0;
     z-index: 5;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease;
     pointer-events: none;
 }
 
@@ -52,6 +51,13 @@ body {
     padding: 2rem;
     max-width: 1200px;
     margin: auto;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#image-gallery.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #image-gallery img {
@@ -63,10 +69,11 @@ body {
 /* PRODUCT VIEW */
 #product-view {
     display: none;
-    position: relative;
-    z-index: 2;
-    height: 100vh;
-    width: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    background: black;
+    overflow: hidden; /* disables scrolling completely */
 }
 
 .product-layout {
@@ -75,7 +82,6 @@ body {
     align-items: center;
     height: 100%;
     gap: 50px;
-    padding: 2rem;
 }
 
 /* IMAGES */
@@ -93,7 +99,7 @@ body {
     max-height: 100%;
     object-fit: contain;
     opacity: 0;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1.8s ease;
 }
 
 .show {
@@ -103,21 +109,11 @@ body {
 /* TEXT */
 .product-info {
     width: 38%;
-    padding: 1rem;
-    background: transparent;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: transparent;
 }
 
-.product-info h1,
-.product-info p {
-    margin: 0;
-}
-
-/* BACK BUTTON */
+/* BACK BUTTON FIXED */
 #back-btn {
     position: fixed;
     top: 20px;
@@ -129,22 +125,8 @@ body {
     cursor: pointer;
 }
 
-/* GALLERY SIZE */
-#image-gallery img {
-    width: 85%;
-}
-
-/* PRODUCT IMAGE SIZE BOOST */
-.product-images {
-    width: 60%;
-}
-
 /* MOBILE */
 @media (max-width: 600px) {
-    #image-gallery {
-        grid-template-columns: 1fr;
-    }
-
     .product-layout {
         flex-direction: column;
     }
