@@ -4,12 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("bg-video");
     const gallery = document.getElementById("image-gallery");
     const productView = document.getElementById("product-view");
+    const logo = document.getElementById("main-logo");
 
     overlay.addEventListener("click", () => {
         overlay.style.display = "none";
+
         video.muted = false;
         video.play();
-        gallery.style.display = "grid";
+
+        logo.style.opacity = "1";
+
+        setTimeout(() => {
+            logo.style.opacity = "0";
+
+            setTimeout(() => {
+                gallery.style.display = "grid";
+            }, 800);
+
+        }, 1500);
     });
 
     const data = {
@@ -42,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let interval;
 
     window.showProduct = (key) => {
-
         const p = data[key];
 
         gallery.style.display = "none";
@@ -61,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function cycle() {
             if (state === 0) {
-                img1.classList.add("show");
                 img2.classList.remove("show");
+                img1.classList.add("show");
                 state = 1;
             } else {
                 img1.classList.remove("show");
@@ -71,9 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        cycle();
+        img1.classList.add("show");
+        img2.classList.remove("show");
+
         clearInterval(interval);
-        interval = setInterval(cycle, 3000);
+        interval = setInterval(cycle, 3500);
     };
 
     window.hideProduct = () => {
