@@ -9,17 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let interval;
 
     overlay.addEventListener("click", () => {
-
         overlay.style.display = "none";
 
         video.muted = false;
         video.play();
 
-        /* Logo intro */
         logo.style.opacity = "1";
 
         setTimeout(() => {
-
             logo.style.opacity = "0";
 
             setTimeout(() => {
@@ -31,28 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = {
         uzi: {
-            imgs: [
-                "assets/images/uzifront.png",
-                "assets/images/uziback.png"
-            ],
+            imgs: ["assets/images/uzifront.png", "assets/images/uziback.png"],
             title: "UZI",
             desc: "220 GSM<br>100% cotton<br>Slight oversize fit"
         },
-
         culture: {
-            imgs: [
-                "assets/images/culturefront.png",
-                "assets/images/cultureback.png"
-            ],
+            imgs: ["assets/images/culturefront.png", "assets/images/cultureback.png"],
             title: "CULTURE",
             desc: "placeholder text<br>placeholder text<br>placeholder text"
         },
-
         cc: {
-            imgs: [
-                "assets/images/ccfront.png",
-                "assets/images/ccback.png"
-            ],
+            imgs: ["assets/images/ccfront.png", "assets/images/ccback.png"],
             title: "CC",
             desc: "placeholder text<br>placeholder text<br>placeholder text"
         }
@@ -62,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const p = data[key];
 
-        /* fade gallery out */
+        // stop gallery interaction + fade out
         gallery.classList.remove("active");
 
         setTimeout(() => {
@@ -71,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 productView.classList.add("active");
-            }, 50);
+            }, 30);
 
             document.getElementById("ptitle").innerHTML = p.title;
             document.getElementById("pdesc").innerHTML = p.desc;
@@ -102,30 +88,25 @@ document.addEventListener("DOMContentLoaded", () => {
             clearInterval(interval);
             interval = setInterval(cycle, 2500);
 
-            /* lock scrolling on product page */
             document.body.style.overflow = "hidden";
 
-        }, 800);
+        }, 400);
     };
 
     window.hideProduct = () => {
 
-        /* fade product page out */
         productView.classList.remove("active");
+
+        clearInterval(interval);
+
+        document.body.style.overflow = "auto";
 
         setTimeout(() => {
 
             productView.style.display = "none";
-
-            /* fade gallery back in */
             gallery.classList.add("active");
 
-        }, 800);
-
-        clearInterval(interval);
-
-        /* restore scrolling on gallery page */
-        document.body.style.overflow = "auto";
+        }, 600);
     };
 
 });
