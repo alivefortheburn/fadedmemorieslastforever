@@ -29,18 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = {
         uzi: {
             imgs: ["assets/images/uzifront.png", "assets/images/uziback.png"],
-            title: "UZI",
-            desc: "220 GSM<br>100% cotton<br>Slight oversize fit"
+            title: "feel like uzi",
+            desc: "inspired by funhouse<br>220 gsm<br>true to size"
         },
         culture: {
             imgs: ["assets/images/culturefront.png", "assets/images/cultureback.png"],
-            title: "CULTURE",
-            desc: "placeholder text<br>placeholder text<br>placeholder text"
+            title: "culture",
+            desc: "inspired by culture<br>250 gsm<br>oversize fit"
         },
         cc: {
             imgs: ["assets/images/ccfront.png", "assets/images/ccback.png"],
-            title: "CC",
-            desc: "placeholder text<br>placeholder text<br>placeholder text"
+            title: "frank ocean",
+            desc: "inspired by closed captions<br>460 gsm<br>oversize fit"
         }
     };
 
