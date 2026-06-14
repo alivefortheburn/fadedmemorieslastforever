@@ -71,7 +71,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 3;
-    background: black;
+    background: transparent;
     overflow: hidden; /* disables scrolling completely */
 }
 
