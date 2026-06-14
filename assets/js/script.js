@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img2.classList.remove("show");
 
         clearInterval(interval);
-        interval = setInterval(cycle, 3500);
+        interval = setInterval(cycle, 2500);
 
         // lock scroll completely on product page
         document.body.style.overflow = "hidden";
