@@ -9,15 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let interval;
 
     overlay.addEventListener("click", () => {
+
         overlay.style.display = "none";
 
         video.muted = false;
         video.play();
 
-        // LOGO SEQUENCE
+        /* Logo intro */
         logo.style.opacity = "1";
 
         setTimeout(() => {
+
             logo.style.opacity = "0";
 
             setTimeout(() => {
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "UZI",
             desc: "220 GSM<br>100% cotton<br>Slight oversize fit"
         },
+
         culture: {
             imgs: [
                 "assets/images/culturefront.png",
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "CULTURE",
             desc: "placeholder text<br>placeholder text<br>placeholder text"
         },
+
         cc: {
             imgs: [
                 "assets/images/ccfront.png",
@@ -58,50 +62,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const p = data[key];
 
+        /* fade gallery out */
         gallery.classList.remove("active");
-        productView.style.display = "block";
 
-        document.getElementById("ptitle").innerHTML = p.title;
-        document.getElementById("pdesc").innerHTML = p.desc;
+        setTimeout(() => {
 
-        const img1 = document.getElementById("pimg1");
-        const img2 = document.getElementById("pimg2");
+            productView.style.display = "block";
 
-        img1.src = p.imgs[0];
-        img2.src = p.imgs[1];
+            setTimeout(() => {
+                productView.classList.add("active");
+            }, 50);
 
-        let state = 0;
+            document.getElementById("ptitle").innerHTML = p.title;
+            document.getElementById("pdesc").innerHTML = p.desc;
 
-        function cycle() {
-            if (state === 0) {
-                img1.classList.add("show");
-                img2.classList.remove("show");
-                state = 1;
-            } else {
-                img1.classList.remove("show");
-                img2.classList.add("show");
-                state = 0;
+            const img1 = document.getElementById("pimg1");
+            const img2 = document.getElementById("pimg2");
+
+            img1.src = p.imgs[0];
+            img2.src = p.imgs[1];
+
+            let state = 0;
+
+            function cycle() {
+                if (state === 0) {
+                    img1.classList.add("show");
+                    img2.classList.remove("show");
+                    state = 1;
+                } else {
+                    img1.classList.remove("show");
+                    img2.classList.add("show");
+                    state = 0;
+                }
             }
-        }
 
-        img1.classList.add("show");
-        img2.classList.remove("show");
+            img1.classList.add("show");
+            img2.classList.remove("show");
 
-        clearInterval(interval);
-        interval = setInterval(cycle, 2500);
+            clearInterval(interval);
+            interval = setInterval(cycle, 2500);
 
-        // lock scroll completely on product page
-        document.body.style.overflow = "hidden";
+            /* lock scrolling on product page */
+            document.body.style.overflow = "hidden";
+
+        }, 800);
     };
 
     window.hideProduct = () => {
 
-        productView.style.display = "none";
-        gallery.classList.add("active");
+        /* fade product page out */
+        productView.classList.remove("active");
+
+        setTimeout(() => {
+
+            productView.style.display = "none";
+
+            /* fade gallery back in */
+            gallery.classList.add("active");
+
+        }, 800);
 
         clearInterval(interval);
 
-        // restore scroll (main page only)
+        /* restore scrolling on gallery page */
         document.body.style.overflow = "auto";
     };
 
