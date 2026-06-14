@@ -84,8 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             img1.classList.add("show");
             img2.classList.remove("show");
-
+            
             clearInterval(interval);
+            cycle();
             interval = setInterval(cycle, 2500);
 
             document.body.style.overflow = "hidden";
