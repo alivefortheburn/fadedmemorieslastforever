@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 gallery.classList.add("active");
-            }, 1200);
+            }, 800);
 
-        }, 3000);
+        }, 1800);
     });
 
     const data = {
