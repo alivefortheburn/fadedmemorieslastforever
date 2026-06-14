@@ -30,17 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
         uzi: {
             imgs: ["assets/images/uzifront.png", "assets/images/uziback.png"],
             title: "feel like uzi",
-            desc: "inspired by funhouse<br>220 gsm<br>true to size"
+            desc: "220 gsm<br>true to size<br>inspired by funhouse"
         },
         culture: {
             imgs: ["assets/images/culturefront.png", "assets/images/cultureback.png"],
             title: "culture",
-            desc: "inspired by culture<br>250 gsm<br>oversize fit"
+            desc: "250 gsm<br>oversize git<br>inspired by culture"
         },
         cc: {
             imgs: ["assets/images/ccfront.png", "assets/images/ccback.png"],
             title: "frank ocean",
-            desc: "inspired by closed captions<br>460 gsm<br>oversize fit"
+            desc: "460 gsm<br>oversize fit<br>inspired by closed captions"
         }
     };
 
