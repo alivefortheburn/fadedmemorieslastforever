@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         culture: {
             imgs: ["assets/images/culturefront.png", "assets/images/cultureback.png"],
             title: "culture",
-            desc: "250 gsm<br>oversize fit<br>inspired by tdf's culture"
+            desc: "250 gsm enzyme wash<br>oversize fit<br>inspired by tdf's culture"
         },
         cc: {
             imgs: ["assets/images/ccfront.png", "assets/images/ccback.png"],
