@@ -3,22 +3,20 @@
 <head>
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D491MS9HLY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D491MS9HLY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D491MS9HLY');
+    </script>
 
-  gtag('config', 'G-D491MS9HLY');
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Art Site</title>
 
-    
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Art Site</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -36,21 +34,18 @@
 <!-- LOGO INTRO -->
 <img id="main-logo" src="assets/images/littlelogo.png">
 
-<!-- GALLERY -->
+<!-- GALLERY (ONLY FRONT IMAGES) -->
 <div id="image-gallery">
 
     <img src="assets/images/uzifront.png" onclick="showProduct('uzi')">
-    <img src="assets/images/uziback.png" onclick="showProduct('uzi')">
 
     <img src="assets/images/culturefront.png" onclick="showProduct('culture')">
-    <img src="assets/images/cultureback.png" onclick="showProduct('culture')">
 
     <img src="assets/images/ccfront.png" onclick="showProduct('cc')">
-    <img src="assets/images/ccback.png" onclick="showProduct('cc')">
 
 </div>
 
-<!-- PRODUCT VIEW -->
+<!-- PRODUCT VIEW (UNCHANGED) -->
 <div id="product-view">
 
     <button id="back-btn" onclick="hideProduct()">← back</button>
