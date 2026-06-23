@@ -41,7 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
             imgs: ["assets/images/ccfront.png", "assets/images/ccback.png"],
             title: "frank ocean",
             desc: "460 gsm<br>oversize fit<br>inspired by che's closed captions"
-        }
+        },
+        fifty: {
+    imgs: [
+        "assets/images/fiftyfront.png",
+        "assets/images/fiftyback.png"
+    ],
+    title: "feel like uzi",
+    desc: "220 gsm<br>true to size<br>inspired by prettifun's funhouse"
+}
     };
 
     window.showProduct = (key) => {
