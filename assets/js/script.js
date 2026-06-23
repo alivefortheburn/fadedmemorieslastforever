@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         fifty: {
     imgs: [
-        "assets/images/fiftyfront.png",
-        "assets/images/fiftyback.png"
+        "assets/images/fiftyfront.PNG",
+        "assets/images/fiftyback.PNG"
     ],
-    title: "feel like uzi",
-    desc: "220 gsm<br>true to size<br>inspired by prettifun's funhouse"
+    title: "fifty floors up",
+    desc: "250 gsm<br>oversize fit<br>inspired by autumn's b2mr"
 }
     };
 
