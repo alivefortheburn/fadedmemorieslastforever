@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/images/fiftyback.PNG"
     ],
     title: "fifty floors up",
-    desc: "250 gsm<br>oversize fit<br>inspired by autumn's b2mr"
+    desc: "250 gsm snow wash<br>oversize fit<br>inspired by autumn's b2mr"
 }
     };
 
